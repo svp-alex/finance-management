@@ -1,12 +1,18 @@
 <template>
   <VApp>
     <MenuList/>
-    <VContainer>
+    <div class="container">
       <RouterView/>
-    </VContainer>
+    </div>
   </VApp>
 </template>
 
 <script lang="ts" setup>
 import MenuList from '@/components/Menu/MenuList.vue'
 </script>
+
+<style scoped>
+.container {
+  margin-left: 56px;
+}
+</style>
