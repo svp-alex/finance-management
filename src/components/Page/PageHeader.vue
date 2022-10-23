@@ -12,6 +12,9 @@
 
 <script lang="ts" setup>
 import { defineProps, defineEmits } from 'vue'
-const props = defineProps(['title'])
+interface Props {
+  title: String,
+}
+const props = defineProps<Props>()
 const emits = defineEmits(['add'])
 </script>

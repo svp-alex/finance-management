@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import type { Category }  from '@/models/category.model'
 
 
 export const useCategoriesStore = defineStore('categories', () => {
-  const categories = ref<Object[]>([])
-  const fetchCategories = async () => {
+  const categories = ref<Category[]>([])
+  const fetchCategories = async (): Promise<void> => {
     categories.value = [
       {id: 1, title: 'Транспорт', description: 'Затраты на все виды транспорта', icon: 'mdi-train'},
       {id: 2, title: 'Дом', description: 'Затраты на домашние дела', icon: 'mdi-home'},
@@ -14,16 +15,11 @@ export const useCategoriesStore = defineStore('categories', () => {
       {id: 7, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
       {id: 8, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
       {id: 9, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 10, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 11, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 12, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 13, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 14, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
-      {id: 15, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом', icon: 'mdi-soccer'},
+      {id: 10, title: 'Сопрт', description: 'Затраты на всё, что связано со спортом' },
     ]
   }
 
-  const addCategory = async (category:Object) => {
+  const addCategory = async (category:Category): Promise<void> => {
     category = {
       ...category,
       id: categories.value.length + 1,
@@ -31,5 +27,9 @@ export const useCategoriesStore = defineStore('categories', () => {
     categories.value.push(category)
   }
 
-  return { categories, fetchCategories, addCategory }
+  const removeCategory = async (id:Number): Promise<void> => {
+    categories.value = categories.value.filter(category => category.id !== id)
+  }
+
+  return { categories, fetchCategories, addCategory, removeCategory }
 })

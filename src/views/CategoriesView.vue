@@ -1,14 +1,15 @@
 <template>
-  <PageHeader title="Категории" @add="isSidebarVisible = true"/>
+  <PageHeader title="Категории" @add="isDialogVisible = true"/>
   <CategoriesList/>
-  <CategorySidebar/>
+  <CategoryModal v-model="isDialogVisible"/>
 </template>
 
 <script lang="ts" setup>
 import CategoriesList from '@/components/Categories/CategoriesList.vue'
-import CategorySidebar from '@/components/Categories/CategorySidebar.vue'
+import CategoryModal from '@/components/Categories/CategoryModal.vue'
 import PageHeader from '@/components/Page/PageHeader.vue'
 import { ref } from 'vue'
 
-const isSidebarVisible = ref(false)
+
+const isDialogVisible = ref<Boolean>(false)
 </script>

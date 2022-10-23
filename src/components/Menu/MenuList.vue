@@ -28,8 +28,8 @@ import UserInfo from '@/components/User/UserInfo.vue'
 import { useMenuStore } from '@/stores/menu'
 
 const menuStore = useMenuStore()
-onMounted(() => {
-  menuStore.fetchItems()
+onMounted(async (): Promise<void> => {
+  await menuStore.fetchItems()
 })
 
 const router = useRouter()
