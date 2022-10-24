@@ -1,5 +1,5 @@
 <template>
-  <PageHeader title="Главная страница"/>
+<!--  <PageHeader title="Главная страница"/>-->
   <VContainer>
     jfdkdfjkfdjkfd
     dfjkfjdkkjdfjkdfjkfd\
@@ -8,5 +8,5 @@
 </template>
 
 <script lang="ts" setup>
-import PageHeader from '@/components/Page/PageHeader.vue'
+// import PageHeader from '@/components/Page/PageHeader.vue'
 </script>

@@ -1,24 +1,25 @@
 <template>
-  <VNavigationDrawer
-    expand-on-hover
-    rail
-  >
-    <UserInfo/>
-
-    <VDivider></VDivider>
-
-    <VList density="compact" nav>
-      <VListItem
+  <QDrawer show-if-above side="left" bordered>
+    <QList padding class="text-primary">
+      <QItem
         v-for="menuItem in menuStore.items"
         :key="menuItem.id"
-        :prepend-icon="menuItem.icon"
-        :title="menuItem.title"
-        :value="menuItem.id"
-        :class="{ 'v-list-item--active': menuItem.route === route.name }"
+        clickable
+        v-ripple
+        :active="menuItem.route === route.name"
         @click="redirectToPage(menuItem.path)"
-      />
-    </VList>
-  </VNavigationDrawer>
+        active-class="my-menu-link"
+      >
+        <QItemSection avatar>
+          <QIcon :name="menuItem.icon"/>
+        </QItemSection>
+
+        <QItemSection>
+          {{ menuItem.title }}
+        </QItemSection>
+      </QItem>
+    </QList>
+  </QDrawer>
 </template>
 
 <script lang="ts" setup>

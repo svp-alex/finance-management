@@ -1,13 +1,13 @@
 <template>
-  <VToolbar color="grey-lighten-3">
-    <VToolbarTitle>
-      {{ props.title }}
-    </VToolbarTitle>
-    <VBtn icon @click="emits('add')">
-      <VSpacer/>
-      <VIcon>mdi-plus</VIcon>
-    </VBtn>
-  </VToolbar>
+  <QHeader elevated class="bg-primary text-white">
+    <QToolbar>
+      <QToolbarTitle>
+        {{ props.title }}
+      </QToolbarTitle>
+
+      <QBtn dense flat round icon="add" @click="emits('add')" />
+    </QToolbar>
+  </QHeader>
 </template>
 
 <script lang="ts" setup>

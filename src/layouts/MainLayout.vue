@@ -1,14 +1,14 @@
 <template>
-  <QBtn color="primary"/>
-  <q-btn color="primary" label="Primary" />
+  <QLayout view="lHr LpR fFf">
+    <PageHeader title="Main page" />
+    <MenuList/>
+    <QPageContainer>
+      <RouterView />
+    </QPageContainer>
+  </QLayout>
 </template>
 
 <script lang="ts" setup>
 import MenuList from '@/components/Menu/MenuList.vue'
+import PageHeader from '@/components/Page/PageHeader.vue'
 </script>
-
-<style scoped>
-.container {
-  margin-left: 56px;
-}
-</style>
