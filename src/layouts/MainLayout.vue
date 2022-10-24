@@ -1,10 +1,6 @@
 <template>
-  <VApp>
-    <MenuList/>
-    <div class="container">
-      <RouterView/>
-    </div>
-  </VApp>
+  <QBtn color="primary"/>
+  <q-btn color="primary" label="Primary" />
 </template>
 
 <script lang="ts" setup>
