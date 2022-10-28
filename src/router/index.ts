@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AuthView from '../views/AuthView.vue'
-import BillsView from '../views/BillsView.vue'
-import CategoriesView from '../views/CategoriesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,7 +8,8 @@ const router = createRouter({
       path: '/',
       name: 'home',
       meta: {
-        layout: 'MainLayout'
+        layout: 'MainLayout',
+        title: 'Главная страница',
       },
       component: HomeView,
     },
@@ -19,17 +17,19 @@ const router = createRouter({
       path: '/bills',
       name: 'bills',
       meta: {
-        layout: 'MainLayout'
+        layout: 'MainLayout',
+        title: 'Счета',
       },
-      component: () => BillsView,
+      component: () => import('../views/BillsView.vue'),
     },
     {
       path: '/categories',
       name: 'categories',
       meta: {
-        layout: 'MainLayout'
+        layout: 'MainLayout',
+        title: 'Категории',
       },
-      component: () => CategoriesView,
+      component: () => import('../views/CategoriesView.vue'),
     },
     {
       path: '/auth',
@@ -37,7 +37,7 @@ const router = createRouter({
       meta: {
         layout: 'AuthLayout'
       },
-      component: () => AuthView,
+      component: () => import('../views/AuthView.vue'),
     },
   ]
 })

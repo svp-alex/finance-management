@@ -1,28 +1,22 @@
 <template>
-  <VList v-if="categoriesStore.categories.length" class="pl-4 pr-4">
-    <VCard
-      v-for="category in categoriesStore.categories"
-      :key="category.title"
-      class="mb-4"
-    >
-      <VListItem
-        :title="category.title"
-        :subtitle="category.description"
-      >
-        <template v-slot:prepend>
-          <VIcon v-if="category.icon">{{ category.icon }}</VIcon>
-        </template>
-        <template v-slot:append>
-          <VBtn
-            color="red"
-            icon="mdi-delete"
-            variant="text"
-            @click="removeCategory(category.id)"
-          />
-        </template>
-      </VListItem>
-    </VCard>
-  </VList>
+  <div v-if="categoriesStore.categories.length" class="q-pa-md">
+    <QList>
+      <QItem v-for="category in categoriesStore.categories" :key="category.id" class="q-mb-sm" clickable v-ripple>
+        <QItemSection avatar>
+          <QAvatar :icon="category.icon"/>
+        </QItemSection>
+
+        <QItemSection>
+          <QItemLabel>{{ category.title }}</QItemLabel>
+          <QItemLabel caption lines="1">{{ category.description }}</QItemLabel>
+        </QItemSection>
+
+        <QItemSection side>
+          <QIcon name="mdi-delete" color="grey" @click="removeCategory(category.id)" />
+        </QItemSection>
+      </QItem>
+    </QList>
+  </div>
   <div v-else class="text-body-1 pa-4">
     Empty list
   </div>

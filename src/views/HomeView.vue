@@ -1,12 +1,11 @@
 <template>
-<!--  <PageHeader title="Главная страница"/>-->
-  <VContainer>
-    jfdkdfjkfdjkfd
-    dfjkfjdkkjdfjkdfjkfd\
-    fddfldfjkdfjkdfjkkjfd
-  </VContainer>
+  Home view
+  <QDrawer v-if="sidebarStore.isSidebarVisible" show-if-above side="right" bordered>
+    Home Sidebar
+  </QDrawer>
 </template>
 
 <script lang="ts" setup>
-// import PageHeader from '@/components/Page/PageHeader.vue'
+import { useSidebarStore } from '@/stores/sidebar'
+const sidebarStore = useSidebarStore()
 </script>

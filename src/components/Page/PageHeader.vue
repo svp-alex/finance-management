@@ -2,19 +2,17 @@
   <QHeader elevated class="bg-primary text-white">
     <QToolbar>
       <QToolbarTitle>
-        {{ props.title }}
+        {{ route.meta.title }}
       </QToolbarTitle>
 
-      <QBtn dense flat round icon="add" @click="emits('add')" />
+      <QBtn dense flat round icon="add" @click="sidebarStore.openSidebar" />
     </QToolbar>
   </QHeader>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue'
-interface Props {
-  title: String,
-}
-const props = defineProps<Props>()
-const emits = defineEmits(['add'])
+import { useRoute } from 'vue-router'
+import { useSidebarStore } from '@/stores/sidebar'
+const sidebarStore = useSidebarStore()
+const route = useRoute()
 </script>

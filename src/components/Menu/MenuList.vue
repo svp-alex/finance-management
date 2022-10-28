@@ -25,7 +25,6 @@
 <script lang="ts" setup>
 import { useRouter, useRoute } from 'vue-router'
 import { onMounted } from 'vue'
-import UserInfo from '@/components/User/UserInfo.vue'
 import { useMenuStore } from '@/stores/menu'
 
 const menuStore = useMenuStore()

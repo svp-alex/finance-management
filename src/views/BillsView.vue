@@ -1,7 +1,11 @@
 <template>
-  <PageHeader title="Счета"/>
+  Bills content
+  <QDrawer v-if="sidebarStore.isSidebarVisible" show-if-above side="right" bordered>
+    Bills sidebar
+  </QDrawer>
 </template>
 
 <script lang="ts" setup>
-import PageHeader from '@/components/Page/PageHeader.vue'
+import { useSidebarStore } from '@/stores/sidebar'
+const sidebarStore = useSidebarStore()
 </script>

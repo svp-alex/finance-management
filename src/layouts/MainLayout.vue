@@ -1,7 +1,7 @@
 <template>
   <QLayout view="lHr LpR fFf">
-    <PageHeader title="Main page" />
-    <MenuList/>
+    <PageHeader />
+    <MenuList />
     <QPageContainer>
       <RouterView />
     </QPageContainer>
