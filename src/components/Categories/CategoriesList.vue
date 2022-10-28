@@ -12,7 +12,7 @@
         </QItemSection>
 
         <QItemSection side>
-          <QIcon name="mdi-delete" color="grey" @click="removeCategory(category.id)" />
+          <QIcon name="delete" color="grey" @click="removeCategory(category.id)" />
         </QItemSection>
       </QItem>
     </QList>
