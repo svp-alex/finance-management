@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
-import { Quasar, Notify } from 'quasar'
+import { Quasar, Notify, Dialog } from 'quasar'
 import { loadFonts } from './plugins/webfontloader'
 import { createPinia } from 'pinia'
 
@@ -23,6 +23,6 @@ createApp(App)
   .use(vuetify)
   .use(pinia)
   .use(Quasar, {
-    plugins: { Notify },
+    plugins: { Notify, Dialog },
   })
   .mount('#app')

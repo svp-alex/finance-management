@@ -25,13 +25,22 @@
 <script lang="ts" setup>
 import { useCategoriesStore } from '@/stores/categories'
 import { onMounted } from 'vue'
+import { useQuasar } from 'quasar'
 
+const $q = useQuasar()
 const categoriesStore = useCategoriesStore()
 onMounted(async (): Promise<void> => {
   await categoriesStore.fetchCategories()
 })
 
-const removeCategory = async (id: Number) => {
-  await categoriesStore.removeCategory(id)
+const removeCategory = (id: Number) => {
+  $q.dialog({
+    title: 'Confirm',
+    message: 'Would you like to turn on the wifi?',
+    cancel: true,
+    persistent: true
+  }).onOk(async () => {
+    await categoriesStore.removeCategory(id)
+  })
 }
 </script>
