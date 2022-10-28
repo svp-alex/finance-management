@@ -13,7 +13,6 @@ import '@quasar/extras/material-icons-round/material-icons-round.css'
 
 // Import Quasar css
 import 'quasar/src/css/index.sass'
-
 const pinia = createPinia()
 loadFonts()
 
