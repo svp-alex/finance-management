@@ -4,4 +4,6 @@
 </template>
 
 <script lang="ts" setup>
+import { useSidebarStore } from '@/stores/sidebar'
+const sidebarStore = useSidebarStore()
 </script>
