@@ -7,7 +7,7 @@
         clickable
         v-ripple
         :active="menuItem.route === route.name"
-        @click="redirectToPage(menuItem.path)"
+        @click="clickHandler(menuItem.path)"
         active-class="my-menu-link"
       >
         <QItemSection avatar>
@@ -26,15 +26,21 @@
 import { useRouter, useRoute } from 'vue-router'
 import { onMounted } from 'vue'
 import { useMenuStore } from '@/stores/menu'
+import { useAuthStore } from '@/stores/auth'
 
 const menuStore = useMenuStore()
+const authStore = useAuthStore()
 onMounted(async (): Promise<void> => {
   await menuStore.fetchItems()
 })
 
 const router = useRouter()
 const route = useRoute()
-const redirectToPage = (route: string) => {
+const clickHandler = (route: string) => {
+  if (!route) {
+    authStore.logout()
+    return
+  }
   router.push(route)
 }
 </script>

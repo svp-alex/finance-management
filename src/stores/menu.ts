@@ -9,7 +9,7 @@ export const useMenuStore = defineStore('menu', () => {
       { id: 1, title: 'Главная', route: 'home', path: '/', icon: 'home' },
       { id: 2, title: 'Счета', route: 'bills', path: '/bills' ,icon: 'payments' },
       { id: 3, title: 'Категории', route: 'categories', path: '/categories' ,icon: 'sports_soccer' },
-      { id: 4, title: 'Выход', route: 'auth', path: '/auth', icon: 'login' },
+      { id: 4, title: 'Выход', icon: 'login' },
     ]
   }
   return { items, fetchItems }

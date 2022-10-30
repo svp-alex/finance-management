@@ -33,6 +33,7 @@ loadFonts()
 let app: App
 const auth = getAuth()
 auth.onAuthStateChanged(() => {
+  console.log('change')
   if (!app) {
     createApp(App)
       .use(router)

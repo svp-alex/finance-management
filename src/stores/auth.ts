@@ -3,6 +3,7 @@ import { getDatabase, ref, set } from 'firebase/database'
 import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useQuasar } from 'quasar'
+import { useRouter } from 'vue-router'
 
 interface User {
   email: string,
@@ -14,6 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
   const auth = getAuth()
   const db = getDatabase()
   const $q = useQuasar()
+  const router = useRouter()
 
   const userUid = computed(() => {
     return auth.currentUser?.uid || null
@@ -57,5 +59,5 @@ export const useAuthStore = defineStore('auth', () => {
     await auth.signOut()
   }
 
-  return { signIn, register, logout }
+  return { signIn, register, logout, userUid }
 })

@@ -5,20 +5,8 @@
 <script lang="ts" setup>
 import MainLayout from './layouts/MainLayout.vue'
 import { useRoute } from 'vue-router'
-import { markRaw, watch, shallowRef, onMounted } from 'vue'
+import { markRaw, watch, shallowRef } from 'vue'
 import { useSidebarStore } from '@/stores/sidebar'
-import { useAuthStore } from '@/stores/auth'
-
-const authStore = useAuthStore()
-
-onMounted(() => {
-  console.log('m')
-  authStore.register({
-    email: 'svpnastya@gmail.com5',
-    password: '123456',
-    name: 'Nastya',
-  })
-})
 
 const layout = shallowRef({})
 layout.value = markRaw(MainLayout)
