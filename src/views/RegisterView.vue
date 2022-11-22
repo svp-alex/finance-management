@@ -1,5 +1,5 @@
 <template>
-  <AuthForm />
+  <AuthForm :is-register="true" />
 </template>
 
 <script lang="ts" setup>

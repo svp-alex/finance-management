@@ -15,10 +15,12 @@ const sidebarStore = useSidebarStore()
 watch(
   () => route.meta,
   async meta => {
+    console.log('start', meta.layout)
     try {
       sidebarStore.closeSidebar()
       const component = await import(`./layouts/${meta.layout}.vue`)
       layout.value = component?.default || MainLayout
+      console.log('l', layout.value)
     } catch (e) {
       layout.value = MainLayout
     }

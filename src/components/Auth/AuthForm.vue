@@ -6,6 +6,7 @@
       class="q-gutter-md"
     >
       <q-input
+        v-if="props.isRegister"
         filled
         v-model="user.name"
         label="Введите имя"
@@ -33,8 +34,14 @@
       <q-toggle v-model="isAccept" label="Согласен на обработку персональных данных" />
 
       <div>
-        <q-btn label="Зарегистрироваться" type="submit" color="primary"/>
-        <q-btn label="Отмена" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn :label="submitButtonTitle" type="submit" color="primary"/>
+        <q-btn
+          :label="redirectButtonTitle"
+          type="reset"
+          color="primary"
+          flat class="q-ml-sm"
+          @click="router.push(redirectButtonRoute)"
+        />
       </div>
     </q-form>
 
@@ -43,10 +50,17 @@
 
 <script lang="ts" setup>
 import { useQuasar } from 'quasar'
-import { ref, reactive } from 'vue'
+import { ref, reactive, defineProps, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
+interface Props {
+  isRegister?: Boolean,
+}
+
+const props = defineProps<Props>()
 const $q = useQuasar()
+const router = useRouter()
 const authStore = useAuthStore()
 const user = reactive({
   name: '',
@@ -55,15 +69,21 @@ const user = reactive({
 })
 const isAccept = ref(false)
 
+const submitButtonTitle = computed(() => props.isRegister ? 'Зарегаться' : 'Войти')
+const redirectButtonTitle = computed(() => props.isRegister ? 'На страницу авторизации' : 'На страницу регистрации')
+const redirectButtonRoute = computed(() => props.isRegister ? '/auth' : '/register')
+
 const onSubmit = async () => {
   if (!isAccept.value) {
     $q.notify({
       type: 'negative',
-      message: 'Нужно подтвердить обработку'
+      message: 'Нужно согласиться'
     })
     return
   }
+  router.push('/')
   await authStore.signIn(user)
+
 }
 
 const onReset = () => {

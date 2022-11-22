@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { getAuth } from 'firebase/auth'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -50,18 +50,16 @@ const router = createRouter({
       meta: {
         layout: 'AuthLayout',
       },
-      component: () => import('../views/AuthView.vue'),
+      component: () => import('../views/RegisterView.vue'),
     },
   ]
 })
 
 router.beforeEach((to: RouteLocationNormalized, from:RouteLocationNormalized , next: NavigationGuardNext) => {
-  const authStore = useAuthStore()
+  const currentUser = getAuth().currentUser
   const requireAuth = to.matched.some(record => record.meta.auth)
 
-  console.log('r', requireAuth)
-  console.log('u', authStore.userUid)
-  if (requireAuth && !authStore.userUid) {
+  if (requireAuth && !currentUser) {
     next('/auth')
   } else {
     next()

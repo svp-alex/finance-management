@@ -30,12 +30,11 @@ initializeApp(firebaseConfig);
 const pinia = createPinia()
 loadFonts()
 
-let app: App
+let app: any
 const auth = getAuth()
 auth.onAuthStateChanged(() => {
-  console.log('change')
   if (!app) {
-    createApp(App)
+    app = createApp(App)
       .use(router)
       .use(pinia)
       .use(Quasar, {

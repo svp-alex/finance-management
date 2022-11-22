@@ -18,6 +18,20 @@
           {{ menuItem.title }}
         </QItemSection>
       </QItem>
+      <QItem
+        key="logout"
+        clickable
+        v-ripple
+        @click="logout"
+      >
+        <QItemSection avatar>
+          <QIcon name="login"/>
+        </QItemSection>
+
+        <QItemSection>
+          logout
+        </QItemSection>
+      </QItem>
     </QList>
   </QDrawer>
 </template>
@@ -37,10 +51,11 @@ onMounted(async (): Promise<void> => {
 const router = useRouter()
 const route = useRoute()
 const clickHandler = (route: string) => {
-  if (!route) {
-    authStore.logout()
-    return
-  }
   router.push(route)
+}
+
+const logout = async () => {
+  await authStore.logout()
+  router.push('/auth')
 }
 </script>
